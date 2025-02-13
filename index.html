@@ -2,15 +2,13 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 添加视口设置 -->
 <title>爱你哦!(๑′ᴗ‵๑)Ｉ Lᵒᵛᵉᵧₒᵤ❤</title>
-<link rel="shortcut icon" href="images/favicon.ico" /> 
+<link rel="shortcut icon" href=" images/favicon.ico" /> 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700'); /* 修复了URL的引号问题 */
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400 ,700);
 body {
   overflow: hidden;
   background: #191747;
-  margin: 0; /* 确保没有默认边距 */
 }
 
 svg {
@@ -18,31 +16,24 @@ svg {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%; /* 设置SVG宽度为100% */
-  height: 100%; /* 设置SVG高度为100% */
 }
 
 #canvas {
   -webkit-filter: url("#goo");
   filter: url("#goo");
-  width: 100%; /* 设置canvas宽度为100% */
-  height: 100%; /* 设置canvas高度为100% */
 }
 
 a {
-  color: #f10b0b;
+  color:#f10b0b;
   text-align: center;
   font-family: Quicksand;
-  text-decoration: none;
+  text-decoration:none;
   letter-spacing: 10px;
-  font-size: 10px; /* 根据需要调整字体大小 */
+  font-size: 10px;
   text-transform: uppercase;
-  position: absolute; /* 设置为绝对定位 */
   top: 100px;
   right: 0;
   left: 0;
-  margin: auto; /* 水平居中 */
-  width: 100%; /* 设置宽度为100% */
 }
 </style>
 </head>
@@ -52,12 +43,14 @@ a {
 
 <canvas id="canvas"></canvas>
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns="http://www.w3.org/2000/svg " version="1.1">
   <filter id="goo">
     <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
     <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 60 -9"/>
   </filter>
+  
 </svg>
+
 
 <script>
 window.onload = function(){
@@ -65,8 +58,8 @@ window.onload = function(){
   var canvas = document.getElementById("canvas"),
       ctx = canvas.getContext("2d");
   
-  var w = canvas.width = window.innerWidth;
-  var h = canvas.height = window.innerHeight;
+  var w = canvas.width = window.innerWidth * 2;
+  var h = canvas.height = window.innerHeight * 2;
 
   var numParticles = 50,
       particles = [],
@@ -83,6 +76,9 @@ window.onload = function(){
   };
 
   var colors = ["#e67e22", "#e74c3c", "blue"];
+
+  // clone object pos
+  var accel = JSON.parse(JSON.stringify(pos));
 
   document.body.addEventListener("mousemove", function(e){
     pos.x = e.clientX;
